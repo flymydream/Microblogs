@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        window?.rootViewController = MainTabViewController()
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -43,4 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+//获取当前print所在的文件路径
+//print(#file) //获取当前print所在的文件路径;
+//print(#function) //获取当前print所在的方法;
+//print(#line) //获取当前print所在的行;
+
+////全局函数  swift中全局可用
+//在函数名字后面用<> 就是泛型  T调用者传什么  T就是什么类型
+var flag:Bool = false
+func NJLog<T>(message: T,fileName: String = #file,methodName: String = #function, lineNumber: Int = #line)
+{
+    #if DEBUG
+   print("\(methodName)[\(lineNumber)]:\(message)")
+    #endif
+}
+
+
+
+
+
+
+
 
